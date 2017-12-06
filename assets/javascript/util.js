@@ -19,22 +19,25 @@ $(document).ready(function(){
     function creatPortfolio(){
         var portfolio=loadData();
         var htmlstr="";
-        var dvMain;
+        var dvMain,dvCol;
         for(i=0;i<portfolio.length;i++){
             if(i%3==0)
             dvMain=$("<div>").addClass("row text-center");
 
-            htmlstr+="<div class=\"col-sm-4\" ><div class=\"thumbnail slideanim\" >";
+            dvCol=$("<div>").addClass("col-sm-4");
+            htmlstr="";
+            htmlstr+="<div class=\"thumbnail slideanim\" >";
             htmlstr+="<img src=\"assets/images/"+portfolio[i].image+"\" alt=\""+portfolio[i].title+"\" >";
             htmlstr+="<h3>"+portfolio[i].title+"</h3><p>"+portfolio[i].desc+"</p>";
             htmlstr+="<p><a href='"+portfolio[i].link+"' >Source Code</a>";
             if(portfolio[i].demo!="unavailable")htmlstr+=" | <a href='"+portfolio[i].demo+"' >Demo</a></p>"
-            htmlstr+="</div></div>";
+            htmlstr+="</div>";
+
+            dvCol.html(htmlstr);
+            dvMain.append(dvCol);
 
             if((i+1)%3 == 0){
             $("#portfolioDv").append(dvMain);
-            dvMain.append(htmlstr);
-            htmlstr="";
             }
         }
         $("#portfolioDv").append(dvMain);
