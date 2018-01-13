@@ -19,21 +19,22 @@ $(document).ready(function(){
     function creatPortfolio(){
         var portfolio=loadData();
         var htmlstr="";
-        var dvMain,dvCol;
+        var dvMain,dvCol,dvThumb;
         for(i=0;i<portfolio.length;i++){
             if(i%3==0)
             dvMain=$("<div>").addClass("row text-center");
 
             dvCol=$("<div>").addClass("col-sm-4");
+            dvThumb=$("<div>").addClass("thumbnail slideanim");
             htmlstr="";
-            htmlstr+="<div class=\"thumbnail slideanim\" >";
             htmlstr+="<img src=\"assets/images/"+portfolio[i].image+"\" alt=\""+portfolio[i].title+"\" >";
             htmlstr+="<h3>"+portfolio[i].title+"</h3><p>"+portfolio[i].desc+"</p>";
             htmlstr+="<p><a href='"+portfolio[i].link+"' >Source Code</a>";
             if(portfolio[i].demo!="unavailable")htmlstr+=" | <a href='"+portfolio[i].demo+"' >Demo</a></p>"
-            htmlstr+="</div>";
+            
 
-            dvCol.html(htmlstr);
+            dvThumb.html(htmlstr);
+            dvCol.append(dvThumb);
             dvMain.append(dvCol);
 
             if((i+1)%3 == 0){
