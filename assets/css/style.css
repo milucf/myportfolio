@@ -15,7 +15,7 @@ header h1{
 
 .intro{
     text-align: center;
-    margin: 50px;
+    margin: 50px auto;
 }
 
 .intro p{
